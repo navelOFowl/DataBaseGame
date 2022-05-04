@@ -88,13 +88,11 @@ namespace DataBaseGame.Pages
         {
             if (RbAns1.IsChecked == true)
             {
-                if(RbAns1.Content.ToString() == CorrectAns)
+                if (RbAns1.Content.ToString() == CorrectAns)
                 {
                     CorrectCount++;
                 }
-                    QuestNum++;
-                    QuestNum++;
-                }
+                QuestNum++;
             }
             else if (RbAns2.IsChecked == true)
             {
@@ -103,8 +101,6 @@ namespace DataBaseGame.Pages
                     CorrectCount++;
                 }
                     QuestNum++;
-                    QuestNum++;
-                }
             }
             else if (RbAns3.IsChecked == true)
             {
@@ -114,9 +110,9 @@ namespace DataBaseGame.Pages
                 }
                     QuestNum++;
                 }
-            else if (RbAns4.IsChecked == true) //аха
+            else if (RbAns4.IsChecked == true)
+            {
                     QuestNum++;
-            }
             }
             else if (RbAns4.IsChecked == true)
             {
@@ -125,7 +121,6 @@ namespace DataBaseGame.Pages
                     CorrectCount++;
                 }
                     QuestNum++;
-                }
             }
             else
             {
@@ -135,12 +130,11 @@ namespace DataBaseGame.Pages
             {
                 MessageBox.Show("Правильных ответов: " + CorrectCount + " из 10!", "Тест завершен!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 FrameClass.MainFrame.Navigate(new PageMenu());
-<<<<<<< HEAD
                 return;
-=======
-2ba1fcfb24aecf62cb939c3df83c4fdf38da3847
             }
             Fill();
         }
+
+            
     }
 }
