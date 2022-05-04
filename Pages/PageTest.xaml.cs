@@ -92,7 +92,7 @@ namespace DataBaseGame.Pages
                 {
                     CorrectCount++;
                 }
-                QuestNum++;
+                    QuestNum++;
                     QuestNum++;
                 }
             }
@@ -102,7 +102,7 @@ namespace DataBaseGame.Pages
                 {
                     CorrectCount++;
                 }
-                QuestNum++;
+                    QuestNum++;
                     QuestNum++;
                 }
             }
@@ -112,11 +112,11 @@ namespace DataBaseGame.Pages
                 {
                     CorrectCount++;
                 }
-                QuestNum++;
-            }
-            else if (RbAns4.IsChecked == true) //аха
                     QuestNum++;
                 }
+            else if (RbAns4.IsChecked == true) //аха
+                    QuestNum++;
+            }
             }
             else if (RbAns4.IsChecked == true)
             {
@@ -128,8 +128,7 @@ namespace DataBaseGame.Pages
                 }
             }
             else
-
-2ba1fcfb24aecf62cb939c3df83c4fdf38da3847
+            {
                 QuestNum++;
             }
             if (QuestNum == 10)
