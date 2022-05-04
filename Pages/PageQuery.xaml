@@ -17,10 +17,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <Button Name="ButBackMenu" Width="100" Height="40" Margin="20,0" Click="ButBackMenu_Click">Меню</Button>
-            <Button Width="100" Height="40" Margin="20,0" Visibility="Collapsed">Сохранить</Button>
-        </StackPanel>
+        <Button Name="ButBackMenu" Width="100" Height="40" Margin="20,0" HorizontalAlignment="Left" Click="ButBackMenu_Click">Меню</Button>
         <Button Width="100" Height="40" Margin="20,0" Grid.Column="1" HorizontalAlignment="Right" Click="Button_Click">Выход</Button>
         <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">
             <Button Name="ButExecute" Width="80" Height="30" Click="ButExecute_Click">Выполнить</Button>
