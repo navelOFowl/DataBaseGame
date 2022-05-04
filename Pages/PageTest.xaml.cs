@@ -110,7 +110,7 @@ namespace DataBaseGame.Pages
                 }
                 QuestNum++;
             }
-            else if (RbAns4.IsChecked == true)
+            else if (RbAns4.IsChecked == true) //аха
             {
                 if (RbAns4.Content.ToString() == CorrectAns)
                 {
