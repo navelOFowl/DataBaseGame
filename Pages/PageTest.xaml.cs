@@ -135,10 +135,7 @@ namespace DataBaseGame.Pages
             {
                 MessageBox.Show("Правильных ответов: " + CorrectCount + " из 10!", "Тест завершен!", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 FrameClass.MainFrame.Navigate(new PageMenu());
-<<<<<<< HEAD
                 return;
-=======
-2ba1fcfb24aecf62cb939c3df83c4fdf38da3847
             }
             Fill();
         }
