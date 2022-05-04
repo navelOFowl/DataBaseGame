@@ -91,7 +91,6 @@ namespace DataBaseGame.Pages
             GridNumber++;
         }
 
-        string Query = "SELECT * FROM Customers \nWHERE ...";
         private void ButBackMenu_Click(object sender, RoutedEventArgs e)
         {
             FrameClass.MainFrame.Navigate(new PageMenu());

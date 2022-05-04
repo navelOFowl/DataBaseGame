@@ -10,7 +10,7 @@
 
     <Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Width="250" Height="250">Теория</Button>
+            <Button Width="250" Height="250" Click="Button_Click">Теория</Button>
             <Button Name="ButQuery" Width="250" Height="250" Click="ButQuery_Click">Запросы</Button>
             <Button Width="250" Height="250">Связи</Button>
         </StackPanel>
