@@ -35,5 +35,10 @@ namespace DataBaseGame.Pages
         {
             FrameClass.MainFrame.Navigate(new PageTest());
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            FrameClass.MainFrame.Navigate(new PageConnect());
+        }
     }
 }

@@ -1,0 +1,34 @@
+﻿<Page x:Class="DataBaseGame.Pages.PageConnect"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:DataBaseGame.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageConnect">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.ColumnSpan="2" Background="#215A89"></Border>
+        <Border Grid.ColumnSpan="2" Grid.Row="1" Background="#66A1D2"></Border>
+        <Line Name="Connection" Grid.ColumnSpan="2" Grid.RowSpan="2"></Line>
+        <Button BorderBrush="#8A9EAF" Background="#66A1D2" Name="ButBackMenu" Width="100" Height="40" Margin="20,0" HorizontalAlignment="Left" Click="ButBackMenu_Click">Меню</Button>
+        <Button BorderBrush="#8A9EAF" Background="#66A1D2" Width="100" Height="40" Margin="20,0" Grid.Column="1" HorizontalAlignment="Right" Click="Button_Click">Выход</Button>
+        <StackPanel Grid.ColumnSpan="2" Grid.Column="0" Width="500">
+            <TextBlock Foreground="AliceBlue" Name="TBTask" Height="70" FontSize="15" TextWrapping="Wrap"></TextBlock>
+        </StackPanel>
+        <ListBox Background="#A7CBE9" Name="LBFirst" Grid.Row="1" Width="250" Height="300" HorizontalAlignment="Left" Margin="15,0" FontSize="20" SelectionChanged="LB_SelectionChanged"></ListBox>
+        <ListBox Background="#A7CBE9" Name="LBSecond" Grid.Row="1" Grid.Column="1" Width="250" Height="300" HorizontalAlignment="Right" Margin="15,0" FontSize="20" SelectionChanged="LB_SelectionChanged"></ListBox>
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Width="100" Height="30" VerticalAlignment="Bottom" Margin="0,15">
+            <Button BorderBrush="#8A9EAF" Background="#A7CBE9" Width="100" Height="30" Click="Button_Click_1"> Выполнить</Button>
+        </StackPanel>
+    </Grid>
+</Page>
