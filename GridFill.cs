@@ -11,5 +11,7 @@ namespace DataBaseGame
         public string Fn { get; set; }
         public string Sn { get; set; }
         public string Bd { get; set; }
+        public string Cl { get; set; }
+        public string Gr { get; set; }
     }
 }

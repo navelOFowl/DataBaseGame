@@ -26,48 +26,47 @@ namespace DataBaseGame.Pages
         DataGridTextColumn cFn = new DataGridTextColumn();
         DataGridTextColumn cSn = new DataGridTextColumn();
         DataGridTextColumn cBd = new DataGridTextColumn();
+        DataGridTextColumn cCl = new DataGridTextColumn();
+        DataGridTextColumn cGr = new DataGridTextColumn();
 
-        string TaskPath = "tasks.csv";
-        int TaskNumber = 0;
-        string QueryPath = "queries.csv";
-        int QueryNumber = 0;
+        string TaskQueryPath = "taskqueries.csv";
+        int TaskQueryNumber = 0;
         string GridPath = "gridfill.csv";
         int GridNumber = 1;
 
-        string[] Tasks;
-        string[] Queries;
+        List<TaskQuery> taskQueryFill = new List<TaskQuery>();
         List<GridFill> fill = new List<GridFill>();
 
         public PageQuery()
         {  
             InitializeComponent();
-            using (StreamReader sr = new StreamReader(TaskPath))
+            TBTime.Text = DateTime.Now.ToString("HH:mm");
+            using (StreamReader sr = new StreamReader(TaskQueryPath))
             {
                 while (sr.EndOfStream != true)
                 {
-                    Tasks = sr.ReadLine().Split(';');
+                    string[] arr = sr.ReadLine().Split(';');
+                    taskQueryFill.Add(new TaskQuery { Task = arr[0], Query = arr[1]});
                 }
             }
-            using (StreamReader sr = new StreamReader(QueryPath))
-            {
-                while (sr.EndOfStream != true)
-                {
-                    Queries = sr.ReadLine().Split(';');
-                }
-            }
-            TbTask.Text = Tasks[0];
+            TbTask.Text = taskQueryFill[0].Task;
             cFn.Header = "Имя";
             cSn.Header = "Фамилия";
             cBd.Header = "Дата рождения";
+            cFn.Header = "Класс";
+            cSn.Header = "Успеваемость";
             cFn.Binding = new Binding("Fn");
             cSn.Binding = new Binding("Sn");
             cBd.Binding = new Binding("Bd");
+            cCl.Binding = new Binding("Cl");
+            cGr.Binding = new Binding("Gr");
             DgResult.Columns.Add(cFn);
             DgResult.Columns.Add(cSn);
             DgResult.Columns.Add(cBd);
+            DgResult.Columns.Add(cCl);
+            DgResult.Columns.Add(cGr);
             GridReader();
             DgResult.ItemsSource = fill;
-            //TbQuery.Text = "SELECT * FROM Customers \nWHERE ...";
         }
         
         private void GridReader()
@@ -79,7 +78,7 @@ namespace DataBaseGame.Pages
                     string[] arr = sr.ReadLine().Split(';');
                     if (arr[0] == GridNumber.ToString())
                     {
-                        fill.Add(new GridFill { Fn = arr[1], Sn = arr[2], Bd = arr[3] });
+                        fill.Add(new GridFill { Fn = arr[1], Sn = arr[2], Bd = arr[3], Cl = arr[4], Gr = arr[5]});
                     }
                     if (arr[0] == "end" + GridNumber.ToString())
                     {
@@ -103,24 +102,23 @@ namespace DataBaseGame.Pages
         private void ButExecute_Click(object sender, RoutedEventArgs e)
         {
             string queryError = "";
-            if(TaskNumber == 10)
+            if (TbQuery.Text.ToLower() != taskQueryFill[TaskQueryNumber].Query.ToLower())
             {
-                MessageBox.Show("Заданий больше нет" + queryError, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-            if (TbQuery.Text != Queries[QueryNumber])
-            {
-                if (TbQuery.Text.ToLower().Contains("where") != true)
+                if (taskQueryFill[TaskQueryNumber].Query.ToLower().Contains("where") && TbQuery.Text.ToLower().Contains("where") != true)
                 {
                     queryError = "отсутствует оператор WHERE";
                 }
-                if (TbQuery.Text.ToLower().Contains("from") != true)
+                if (taskQueryFill[TaskQueryNumber].Query.ToLower().Contains("from") && TbQuery.Text.ToLower().Contains("from") != true)
                 {
                     queryError = "отсутствует оператор FROM";
                 }
-                if (TbQuery.Text.ToLower().Contains("select") != true)
+                if (taskQueryFill[TaskQueryNumber].Query.ToLower().Contains("select") && TbQuery.Text.ToLower().Contains("select") != true)
                 {
                     queryError = "отсутствует оператор SELECT";
+                }
+                if(queryError == "")
+                {
+                    queryError = "неверные аргументы";
                 }
                 
                 MessageBox.Show("Запрос введен неправильно: " + queryError, "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -138,15 +136,14 @@ namespace DataBaseGame.Pages
             DgResult.Visibility = Visibility.Hidden;
             ButNext.Visibility = Visibility.Hidden;
             GridReader();
-            QueryNumber++;
-            TaskNumber++;
-            if(TaskNumber == 10)
+            TaskQueryNumber++;
+            if(TaskQueryNumber == 10)
             {
                 MessageBox.Show("Позравляем! Все задания успешно пройдены", "Финиш!", MessageBoxButton.OK, MessageBoxImage.Information);
-                TbTask.Text = "";
+                FrameClass.MainFrame.Navigate(new PageMenu());
                 return;
             }
-            TbTask.Text = Tasks[TaskNumber];
+            TbTask.Text = taskQueryFill[TaskQueryNumber].Task;
         }
     }
 }

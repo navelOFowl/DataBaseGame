@@ -29,6 +29,7 @@ namespace DataBaseGame.Pages
         public PageTest()
         {
             InitializeComponent();
+            TBTime.Text = DateTime.Now.ToString("HH:mm");
             using (StreamReader sr = new StreamReader(QuestPath))
             {
                 while (sr.EndOfStream != true)
@@ -100,7 +101,7 @@ namespace DataBaseGame.Pages
                 {
                     CorrectCount++;
                 }
-                    QuestNum++;
+                QuestNum++;
             }
             else if (RbAns3.IsChecked == true)
             {
@@ -108,11 +109,7 @@ namespace DataBaseGame.Pages
                 {
                     CorrectCount++;
                 }
-                    QuestNum++;
-                }
-            else if (RbAns4.IsChecked == true)
-            {
-                    QuestNum++;
+                QuestNum++;
             }
             else if (RbAns4.IsChecked == true)
             {
@@ -120,7 +117,7 @@ namespace DataBaseGame.Pages
                 {
                     CorrectCount++;
                 }
-                    QuestNum++;
+                QuestNum++;
             }
             else
             {

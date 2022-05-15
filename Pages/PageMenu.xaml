@@ -9,10 +9,18 @@
       Title="PageMenu">
 
     <Grid>
+        <Image Source="/Img/Menu Background.png"></Image>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Width="250" Height="250" Click="Button_Click">Теория</Button>
-            <Button Name="ButQuery" Width="250" Height="250" Click="ButQuery_Click">Запросы</Button>
-            <Button Width="250" Height="250" Click="Button_Click_1">Связи</Button>
+            <Button Background="Transparent" BorderBrush="Transparent" Width="200" Height="200" Click="Button_Click">
+                <Image Source="/Img/But Test.png"/>
+            </Button>
+            <Button Background="Transparent" BorderBrush="Transparent" Name="ButQuery" Width="200" Height="200" Margin="40,0" Click="ButQuery_Click">
+                <Image Source="/Img/But Query.png"/>
+            </Button>
+            <Button Background="Transparent" BorderBrush="Transparent" Width="200" Height="200" Click="Button_Click_1">
+                <Image Source="/Img/But Connect.png"/>
+            </Button>
         </StackPanel>
+        <TextBlock Name="TBTime" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="10,4">00:00</TextBlock>
     </Grid>
 </Page>

@@ -24,6 +24,7 @@ namespace DataBaseGame.Pages
         public PageMenu()
         {
             InitializeComponent();
+            TBTime.Text = DateTime.Now.ToString("HH:mm");
         }
 
         private void ButQuery_Click(object sender, RoutedEventArgs e)

@@ -28,6 +28,7 @@ namespace DataBaseGame.Pages
         public PageConnect()
         {
             InitializeComponent();
+            TBTime.Text = DateTime.Now.ToString("HH:mm");
             using (StreamReader sr = new StreamReader(ConnPath))
             {
                 while (sr.EndOfStream != true)
@@ -63,15 +64,15 @@ namespace DataBaseGame.Pages
             {
                 case 0:
                     Connection.X1 = 260;
-                    Connection.Y1 = 155;
+                    Connection.Y1 = 45;
                     break;
                 case 1:
                     Connection.X1 = 260;
-                    Connection.Y1 = 190;
+                    Connection.Y1 = 80;
                     break;
                 case 2:
                     Connection.X1 = 260;
-                    Connection.Y1 = 225;
+                    Connection.Y1 = 115;
                     break;
                 default:
                     Connection.X1 = 540;
@@ -82,22 +83,22 @@ namespace DataBaseGame.Pages
             switch (LBSecond.SelectedIndex)
             {
                 case 0:
-                    Connection.X2 = 540;
-                    Connection.Y2 = 155;                 
+                    Connection.X2 = 650;
+                    Connection.Y2 = 110;                 
                     Connection.StrokeThickness = 4;
-                    Connection.Stroke = new SolidColorBrush((Color) ColorConverter.ConvertFromString("#A7CBE9"));
+                    Connection.Stroke = Brushes.Black;
                     break;
                 case 1:
-                    Connection.X2 = 540;
-                    Connection.Y2 = 190;
+                    Connection.X2 = 650;
+                    Connection.Y2 = 140;
                     Connection.StrokeThickness = 4;
-                    Connection.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#A7CBE9"));
+                    Connection.Stroke = Brushes.Black;
                     break;
                 case 2:
-                    Connection.X2 = 540;
-                    Connection.Y2 = 225;
+                    Connection.X2 = 650;
+                    Connection.Y2 = 175;
                     Connection.StrokeThickness = 4;
-                    Connection.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#A7CBE9"));
+                    Connection.Stroke = Brushes.Black;
                     break;
                 default:
                     Connection.X2 = Connection.X1;
@@ -108,12 +109,15 @@ namespace DataBaseGame.Pages
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if(LBFirst.SelectedItem.ToString() == fill[TaskNum].FirstCorrect && LBSecond.SelectedItem.ToString() == fill[TaskNum].SecondCorrect)
+            if(LBFirst.SelectedItem == null || LBSecond.SelectedItem == null)
             {
-                MessageBox.Show("Все ок");
+                MessageBox.Show("Выберете поля", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (LBFirst.SelectedItem.ToString() == fill[TaskNum].FirstCorrect && LBSecond.SelectedItem.ToString() == fill[TaskNum].SecondCorrect)
+            {
+                MessageBox.Show("Готово!", "Связи", MessageBoxButton.OK, MessageBoxImage.Information);
                 TaskNum++;
-                //Connection.X1 = 560;
-                //Connection.Y1 = 155;
                 Connection.X1 = 0;
                 Connection.Y1 = 0;
                 Connection.X2 = 0;
@@ -121,7 +125,7 @@ namespace DataBaseGame.Pages
             }
             else
             {
-                if(MessageBox.Show("Не ок. Показать правильно?", "Ошибка", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+                if (MessageBox.Show("Неверно. Продемонстрировать правильный ответ?", "Связи", MessageBoxButton.OKCancel, MessageBoxImage.Information) == MessageBoxResult.OK)
                 {
                     DrawingCorrect();
                     return;
@@ -154,38 +158,56 @@ namespace DataBaseGame.Pages
             {
                 case 0:
                     Connection.X1 = 260;
-                    Connection.Y1 = 155;
+                    Connection.Y1 = 45;
                     break;
                 case 1:
                     Connection.X1 = 260;
-                    Connection.Y1 = 190;
+                    Connection.Y1 = 80;
                     break;
                 case 2:
                     Connection.X1 = 260;
-                    Connection.Y1 = 225;
+                    Connection.Y1 = 115;
                     break;
             }
 
             switch (LBSecond.SelectedIndex)
             {
                 case 0:
-                    Connection.X2 = 540;
-                    Connection.Y2 = 155;
+                    Connection.X2 = 650;
+                    Connection.Y2 = 110;
                     Connection.StrokeThickness = 4;
-                    Connection.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFD395"));
+                    Connection.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#070770"));
                     break;
                 case 1:
-                    Connection.X2 = 540;
-                    Connection.Y2 = 190;
+                    Connection.X2 = 650;
+                    Connection.Y2 = 140;
                     Connection.StrokeThickness = 4;
-                    Connection.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFD395"));
+                    Connection.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#070770"));
                     break;
                 case 2:
-                    Connection.X2 = 540;
-                    Connection.Y2 = 225;
+                    Connection.X2 = 650;
+                    Connection.Y2 = 175;
                     Connection.StrokeThickness = 4;
-                    Connection.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFD395"));
+                    Connection.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#070770"));
                     break;
+                    //case 0:
+                    //    Connection.X2 = 540;
+                    //    Connection.Y2 = 155;
+                    //    Connection.StrokeThickness = 4;
+                    //    Connection.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFD395"));
+                    //    break;
+                    //case 1:
+                    //    Connection.X2 = 540;
+                    //    Connection.Y2 = 190;
+                    //    Connection.StrokeThickness = 4;
+                    //    Connection.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFD395"));
+                    //    break;
+                    //case 2:
+                    //    Connection.X2 = 540;
+                    //    Connection.Y2 = 225;
+                    //    Connection.StrokeThickness = 4;
+                    //    Connection.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFD395"));
+                    //    break;
             }
         }
 

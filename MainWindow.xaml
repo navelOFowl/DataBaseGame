@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DataBaseGame"
         mc:Ignorable="d"
-        Title="SQL Trainer" Height="550" Width="800">
+        Title="SQL Тренажер" Height="550" Width="924" MinHeight="550" MinWidth="924" ResizeMode="NoResize" Icon="/Img/icon.ico">
     <Grid>
         <Frame Name="MainWinFrame" NavigationUIVisibility="Hidden"/>
     </Grid>

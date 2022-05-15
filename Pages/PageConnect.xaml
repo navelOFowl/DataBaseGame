@@ -6,29 +6,44 @@
       xmlns:local="clr-namespace:DataBaseGame.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PageConnect">
+      Title="PageConnect" FontFamily="Arial">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70"/>
+            <RowDefinition Height="25"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Border Grid.ColumnSpan="2" Background="#215A89"></Border>
-        <Border Grid.ColumnSpan="2" Grid.Row="1" Background="#66A1D2"></Border>
+        <Image Source="/Img/Conn Background.png" Grid.ColumnSpan="2" Grid.RowSpan="2"></Image>
+        <Border Grid.ColumnSpan="2"></Border>
+        <Border Grid.ColumnSpan="2" Grid.Row="1"></Border>
         <Line Name="Connection" Grid.ColumnSpan="2" Grid.RowSpan="2"></Line>
-        <Button BorderBrush="#8A9EAF" Background="#66A1D2" Name="ButBackMenu" Width="100" Height="40" Margin="20,0" HorizontalAlignment="Left" Click="ButBackMenu_Click">Меню</Button>
-        <Button BorderBrush="#8A9EAF" Background="#66A1D2" Width="100" Height="40" Margin="20,0" Grid.Column="1" HorizontalAlignment="Right" Click="Button_Click">Выход</Button>
-        <StackPanel Grid.ColumnSpan="2" Grid.Column="0" Width="500">
-            <TextBlock Foreground="AliceBlue" Name="TBTask" Height="70" FontSize="15" TextWrapping="Wrap"></TextBlock>
-        </StackPanel>
-        <ListBox Background="#A7CBE9" Name="LBFirst" Grid.Row="1" Width="250" Height="300" HorizontalAlignment="Left" Margin="15,0" FontSize="20" SelectionChanged="LB_SelectionChanged"></ListBox>
-        <ListBox Background="#A7CBE9" Name="LBSecond" Grid.Row="1" Grid.Column="1" Width="250" Height="300" HorizontalAlignment="Right" Margin="15,0" FontSize="20" SelectionChanged="LB_SelectionChanged"></ListBox>
-        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Width="100" Height="30" VerticalAlignment="Bottom" Margin="0,15">
-            <Button BorderBrush="#8A9EAF" Background="#A7CBE9" Width="100" Height="30" Click="Button_Click_1"> Выполнить</Button>
-        </StackPanel>
+        <Button Background="Transparent" BorderThickness="0"  Name="ButBackMenu" Grid.Column="1" Width="18" Height="15" Margin="43,4.5" VerticalAlignment="Top" HorizontalAlignment="Right" Click="ButBackMenu_Click">
+            <Image Source="/Img/ButtonMenu.png"></Image>
+        </Button>
+        <Button Background="Transparent" BorderThickness="0" Width="18" Height="15" Margin="8,4.5" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Click="Button_Click">
+            <Image Source="/Img/ButtonExit.png"></Image>
+        </Button>
+        <TextBlock Grid.Row="1" VerticalAlignment="Bottom" Width="268" HorizontalAlignment="Left" Margin="10,35" Name="TBTask" Height="75" FontSize="15" TextWrapping="Wrap">ПЛплплпл</TextBlock>
+            <ListBox VerticalAlignment="Top" Grid.RowSpan="2" Background="#F0F0F0" BorderBrush="#808080" Name="LBFirst" Grid.Row="1" Width="250" Height="250" HorizontalAlignment="Left" Margin="45,15" FontSize="20" SelectionChanged="LB_SelectionChanged">
+            <ListBox.Effect>
+                <DropShadowEffect BlurRadius="0" ShadowDepth="2"/>
+            </ListBox.Effect>
+        </ListBox>
+        <ListBox Background="#F0F0F0" BorderBrush="#808080" Name="LBSecond" Grid.Row="1" Grid.Column="1" Width="250" Height="250" HorizontalAlignment="Right" Margin="45,60" VerticalAlignment="Top" FontSize="20" SelectionChanged="LB_SelectionChanged">
+            <ListBox.Effect>
+                <DropShadowEffect BlurRadius="0" ShadowDepth="2"/>
+            </ListBox.Effect>
+        </ListBox>
+        <Button Grid.ColumnSpan="2" Grid.Row="1" VerticalAlignment="Bottom" BorderThickness="0" Background="Transparent" Width="124" Height="45" Margin="0,0,0,43" Click="Button_Click_1">
+            <Grid>
+                <Image Source="/Img/Button.png"></Image>
+                <TextBlock FontFamily="Arial" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center">Выполнить</TextBlock>
+            </Grid>
+        </Button>
+        <TextBlock Grid.RowSpan="2" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10,4" Name="TBTime">00:00</TextBlock>
     </Grid>
 </Page>

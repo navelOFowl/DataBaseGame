@@ -60,6 +60,7 @@
       <DependentUpon>PageConnect.xaml</DependentUpon>
     </Compile>
     <Compile Include="QuestFill.cs" />
+    <Compile Include="TaskQuery.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -126,6 +127,32 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Img\But Connect.png" />
+    <Resource Include="Img\But Query.png" />
+    <Resource Include="Img\But Test.png" />
+    <Resource Include="Img\Menu Background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\ButtonExit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Test Background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\ButtonMenu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\QueryBack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\Conn Background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Img\icon.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
