@@ -75,8 +75,8 @@ namespace DataBaseGame.Pages
                     Connection.Y1 = 115;
                     break;
                 default:
-                    Connection.X1 = 540;
-                    Connection.Y1 = 150;
+                    Connection.X1 = 650;
+                    Connection.Y1 = 110;
                     break;
             }
 
@@ -107,8 +107,10 @@ namespace DataBaseGame.Pages
             }
         }
 
+        int taskCount = 0;
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            
             if(LBFirst.SelectedItem == null || LBSecond.SelectedItem == null)
             {
                 MessageBox.Show("Выберете поля", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -130,6 +132,13 @@ namespace DataBaseGame.Pages
                     DrawingCorrect();
                     return;
                 }
+            }
+            taskCount++;
+            if (taskCount == 10)
+            {
+                MessageBox.Show("Все задания успешно пройдены!", "Финиш!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                FrameClass.MainFrame.Navigate(new PageMenu());
+                return;
             }
             Fill();
         }
