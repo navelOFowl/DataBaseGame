@@ -44,6 +44,12 @@
                 <TextBlock FontFamily="Arial" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center">Выполнить</TextBlock>
             </Grid>
         </Button>
+        <TextBlock Name="TBCon21" FontFamily="Arial" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Visibility="Hidden" Margin="0, 60,160,0">1</TextBlock>
+        <TextBlock Name="TBCon22" FontFamily="Arial" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Visibility="Hidden" Margin="0, 87,160,0">1</TextBlock>
+        <TextBlock Name="TBCon23" FontFamily="Arial" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Visibility="Hidden" Margin="0, 120,160,0">1</TextBlock>
+        <TextBlock Name="TBCon11" FontFamily="Arial" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Visibility="Hidden" Margin="0, 39,140,0">М</TextBlock>
+        <TextBlock Name="TBCon12" FontFamily="Arial" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Visibility="Hidden" Margin="0, 69,140,0">М</TextBlock>
+        <TextBlock Name="TBCon13" FontFamily="Arial" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Visibility="Hidden" Margin="0, 100,140,0">М</TextBlock>
         <TextBlock Grid.RowSpan="2" Grid.ColumnSpan="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10,4" Name="TBTime">00:00</TextBlock>
     </Grid>
 </Page>

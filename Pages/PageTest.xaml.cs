@@ -1,4 +1,5 @@
 ﻿using DataBaseGame.Classes;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -24,20 +25,58 @@ namespace DataBaseGame.Pages
     {
         int CorrectCount = 0;
         List<QuestFill> fill = new List<QuestFill>();
-        string QuestPath = "quests.csv";
+        //string QuestPath = "quests.csv";
+        string QuestPathBin = "";
         string CorrectAns = "";
         public PageTest()
         {
             InitializeComponent();
             TBTime.Text = DateTime.Now.ToString("HH:mm");
-            using (StreamReader sr = new StreamReader(QuestPath))
+
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.InitialDirectory = Environment.CurrentDirectory;
+            bool IsChose = (bool)dlg.ShowDialog();
+            if (IsChose)
             {
-                while (sr.EndOfStream != true)
+                QuestPathBin = dlg.FileName;
+            }
+            else
+            {
+                MessageBox.Show("Файл не выбран", "Ошибка");
+                FrameClass.MainFrame.Navigate(new PageMenu());
+                return;
+            }
+            try
+            {
+
+                using (BinaryReader sr = new BinaryReader(File.Open(QuestPathBin, FileMode.Open)))
                 {
-                    string[] arr = sr.ReadLine().Split(';');
-                    fill.Add(new QuestFill { Quest = arr[0], Answer1 = arr[1], Answer2 = arr[2], Answer3 = arr[3], Answer4 = arr[4] });
+                    int i = 0;
+                    while (sr.PeekChar() > -1)
+                    {
+                        fill.Add(new QuestFill());
+                        fill[i].Quest = sr.ReadString();
+                        fill[i].Answer1 = sr.ReadString();
+                        fill[i].Answer2 = sr.ReadString();
+                        fill[i].Answer3 = sr.ReadString();
+                        fill[i].Answer4 = sr.ReadString();
+                        i++;
+                    }
                 }
             }
+            catch
+            {
+                MessageBox.Show("Файл может быть поврежден", "Ошибка");
+            }
+
+            //using (StreamReader sr = new StreamReader(QuestPath))
+            //{
+            //    while (sr.EndOfStream != true)
+            //    {
+            //        string[] arr = sr.ReadLine().Split(';');
+            //        fill.Add(new QuestFill { Quest = arr[0], Answer1 = arr[1], Answer2 = arr[2], Answer3 = arr[3], Answer4 = arr[4] });
+            //    }
+            //}
             Fill();
         }
 

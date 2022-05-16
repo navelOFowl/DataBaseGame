@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DataBaseGame.Classes;
+using Microsoft.Win32;
 
 namespace DataBaseGame.Pages
 {
@@ -29,7 +30,8 @@ namespace DataBaseGame.Pages
         DataGridTextColumn cCl = new DataGridTextColumn();
         DataGridTextColumn cGr = new DataGridTextColumn();
 
-        string TaskQueryPath = "taskqueries.csv";
+        //string TaskQueryPath = "taskqueries.csv";
+        string QueryPathBin = "";
         int TaskQueryNumber = 0;
         string GridPath = "gridfill.csv";
         int GridNumber = 1;
@@ -41,14 +43,49 @@ namespace DataBaseGame.Pages
         {  
             InitializeComponent();
             TBTime.Text = DateTime.Now.ToString("HH:mm");
-            using (StreamReader sr = new StreamReader(TaskQueryPath))
+
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.InitialDirectory = Environment.CurrentDirectory;
+            bool IsChose = (bool)dlg.ShowDialog();
+            if (IsChose)
             {
-                while (sr.EndOfStream != true)
+                QueryPathBin = dlg.FileName;
+            }
+            else
+            {
+                MessageBox.Show("Файл не выбран", "Ошибка");
+                FrameClass.MainFrame.Navigate(new PageMenu());
+                return;
+            }
+            try
+            {
+                using (BinaryReader sr = new BinaryReader(File.Open(QueryPathBin, FileMode.Open)))
                 {
-                    string[] arr = sr.ReadLine().Split(';');
-                    taskQueryFill.Add(new TaskQuery { Task = arr[0], Query = arr[1]});
+                    int i = 0;
+                    while (sr.PeekChar() > -1)
+                    {
+                        taskQueryFill.Add(new TaskQuery());
+                        taskQueryFill[i].Task = sr.ReadString();
+                        taskQueryFill[i].Query = sr.ReadString();
+                        i++;
+
+                    }
                 }
             }
+            catch
+            {
+                MessageBox.Show("Файл может быть поврежден", "Ошибка");
+            }
+
+            //using (StreamReader sr = new StreamReader(TaskQueryPath))
+            //{
+            //    while (sr.EndOfStream != true)
+            //    {
+            //        string[] arr = sr.ReadLine().Split(';');
+            //        taskQueryFill.Add(new TaskQuery { Task = arr[0], Query = arr[1]});
+            //    }
+            //}
+
             TbTask.Text = taskQueryFill[0].Task;
             cFn.Header = "Имя";
             cSn.Header = "Фамилия";

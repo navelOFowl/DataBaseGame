@@ -1,4 +1,5 @@
 ﻿using DataBaseGame.Classes;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -22,21 +23,63 @@ namespace DataBaseGame.Pages
     /// </summary>
     public partial class PageConnect : Page
     {
-        string ConnPath = "connections.csv";
+        //string ConnPath = "connections.csv";
+        string ConnPathBin = "";
         int TaskNum = 0;
         List<ConnFill> fill = new List<ConnFill>();
         public PageConnect()
         {
             InitializeComponent();
             TBTime.Text = DateTime.Now.ToString("HH:mm");
-            using (StreamReader sr = new StreamReader(ConnPath))
+
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.InitialDirectory = Environment.CurrentDirectory;
+            bool IsChose = (bool)dlg.ShowDialog();
+            if (IsChose)
             {
-                while (sr.EndOfStream != true)
+                ConnPathBin = dlg.FileName;
+            }
+            else
+            {
+                MessageBox.Show("Файл не выбран", "Ошибка");
+                FrameClass.MainFrame.Navigate(new PageMenu());
+                return;
+            }
+            try
+            {
+
+                using (BinaryReader sr = new BinaryReader(File.Open(ConnPathBin, FileMode.Open)))
                 {
-                    string[] arr = sr.ReadLine().Split(';');
-                    fill.Add(new ConnFill { Task = arr[0], First1 = arr[1], First2 = arr[2], First3 = arr[3], Second1 = arr[4], Second2 = arr[5], Second3 = arr[6], FirstCorrect = arr[7], SecondCorrect = arr[8] });
+                    int i = 0;
+                    while (sr.PeekChar() > -1)
+                    {
+                        fill.Add(new ConnFill());
+                        fill[i].Task = sr.ReadString();
+                        fill[i].First1 = sr.ReadString();
+                        fill[i].First2 = sr.ReadString();
+                        fill[i].First3 = sr.ReadString();
+                        fill[i].Second1 = sr.ReadString();
+                        fill[i].Second2 = sr.ReadString();
+                        fill[i].Second3 = sr.ReadString();
+                        fill[i].FirstCorrect = sr.ReadString();
+                        fill[i].SecondCorrect = sr.ReadString();
+                        i++;
+                    }
                 }
             }
+            catch
+            {
+                MessageBox.Show("Файл может быть поврежден", "Ошибка");
+            }
+
+            //using (StreamReader sr = new StreamReader(ConnPath))
+            //{
+            //    while (sr.EndOfStream != true)
+            //    {
+            //        string[] arr = sr.ReadLine().Split(';');
+            //        fill.Add(new ConnFill { Task = arr[0], First1 = arr[1], First2 = arr[2], First3 = arr[3], Second1 = arr[4], Second2 = arr[5], Second3 = arr[6], FirstCorrect = arr[7], SecondCorrect = arr[8] });
+            //    }
+            //}
             Fill();
         }
 
@@ -65,14 +108,23 @@ namespace DataBaseGame.Pages
                 case 0:
                     Connection.X1 = 260;
                     Connection.Y1 = 45;
+                    TBCon11.Visibility = Visibility.Visible;
+                    TBCon12.Visibility = Visibility.Hidden;
+                    TBCon13.Visibility = Visibility.Hidden;
                     break;
                 case 1:
                     Connection.X1 = 260;
                     Connection.Y1 = 80;
+                    TBCon12.Visibility = Visibility.Visible;
+                    TBCon11.Visibility = Visibility.Hidden;
+                    TBCon13.Visibility = Visibility.Hidden;
                     break;
                 case 2:
                     Connection.X1 = 260;
                     Connection.Y1 = 115;
+                    TBCon13.Visibility = Visibility.Visible;
+                    TBCon11.Visibility = Visibility.Hidden;
+                    TBCon12.Visibility = Visibility.Hidden;
                     break;
                 default:
                     Connection.X1 = 650;
@@ -87,18 +139,27 @@ namespace DataBaseGame.Pages
                     Connection.Y2 = 110;                 
                     Connection.StrokeThickness = 4;
                     Connection.Stroke = Brushes.Black;
+                    TBCon21.Visibility = Visibility.Visible;
+                    TBCon22.Visibility = Visibility.Hidden;
+                    TBCon23.Visibility = Visibility.Hidden;
                     break;
                 case 1:
                     Connection.X2 = 650;
                     Connection.Y2 = 140;
                     Connection.StrokeThickness = 4;
                     Connection.Stroke = Brushes.Black;
+                    TBCon22.Visibility = Visibility.Visible;
+                    TBCon21.Visibility = Visibility.Hidden;
+                    TBCon23.Visibility = Visibility.Hidden;
                     break;
                 case 2:
                     Connection.X2 = 650;
                     Connection.Y2 = 175;
                     Connection.StrokeThickness = 4;
                     Connection.Stroke = Brushes.Black;
+                    TBCon23.Visibility = Visibility.Visible;
+                    TBCon22.Visibility = Visibility.Hidden;
+                    TBCon21.Visibility = Visibility.Hidden;
                     break;
                 default:
                     Connection.X2 = Connection.X1;
@@ -124,6 +185,13 @@ namespace DataBaseGame.Pages
                 Connection.Y1 = 0;
                 Connection.X2 = 0;
                 Connection.Y2 = 0;
+                TBCon11.Visibility = Visibility.Hidden;
+                TBCon12.Visibility = Visibility.Hidden;
+                TBCon13.Visibility = Visibility.Hidden;
+
+                TBCon21.Visibility = Visibility.Hidden;
+                TBCon22.Visibility = Visibility.Hidden;
+                TBCon23.Visibility = Visibility.Hidden;
             }
             else
             {
@@ -199,24 +267,6 @@ namespace DataBaseGame.Pages
                     Connection.StrokeThickness = 4;
                     Connection.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#070770"));
                     break;
-                    //case 0:
-                    //    Connection.X2 = 540;
-                    //    Connection.Y2 = 155;
-                    //    Connection.StrokeThickness = 4;
-                    //    Connection.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFD395"));
-                    //    break;
-                    //case 1:
-                    //    Connection.X2 = 540;
-                    //    Connection.Y2 = 190;
-                    //    Connection.StrokeThickness = 4;
-                    //    Connection.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFD395"));
-                    //    break;
-                    //case 2:
-                    //    Connection.X2 = 540;
-                    //    Connection.Y2 = 225;
-                    //    Connection.StrokeThickness = 4;
-                    //    Connection.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFD395"));
-                    //    break;
             }
         }
 
