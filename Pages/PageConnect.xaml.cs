@@ -108,23 +108,14 @@ namespace DataBaseGame.Pages
                 case 0:
                     Connection.X1 = 260;
                     Connection.Y1 = 45;
-                    TBCon11.Visibility = Visibility.Visible;
-                    TBCon12.Visibility = Visibility.Hidden;
-                    TBCon13.Visibility = Visibility.Hidden;
                     break;
                 case 1:
                     Connection.X1 = 260;
                     Connection.Y1 = 80;
-                    TBCon12.Visibility = Visibility.Visible;
-                    TBCon11.Visibility = Visibility.Hidden;
-                    TBCon13.Visibility = Visibility.Hidden;
                     break;
                 case 2:
                     Connection.X1 = 260;
                     Connection.Y1 = 115;
-                    TBCon13.Visibility = Visibility.Visible;
-                    TBCon11.Visibility = Visibility.Hidden;
-                    TBCon12.Visibility = Visibility.Hidden;
                     break;
                 default:
                     Connection.X1 = 650;
@@ -139,27 +130,18 @@ namespace DataBaseGame.Pages
                     Connection.Y2 = 110;                 
                     Connection.StrokeThickness = 4;
                     Connection.Stroke = Brushes.Black;
-                    TBCon21.Visibility = Visibility.Visible;
-                    TBCon22.Visibility = Visibility.Hidden;
-                    TBCon23.Visibility = Visibility.Hidden;
                     break;
                 case 1:
                     Connection.X2 = 650;
                     Connection.Y2 = 140;
                     Connection.StrokeThickness = 4;
                     Connection.Stroke = Brushes.Black;
-                    TBCon22.Visibility = Visibility.Visible;
-                    TBCon21.Visibility = Visibility.Hidden;
-                    TBCon23.Visibility = Visibility.Hidden;
                     break;
                 case 2:
                     Connection.X2 = 650;
                     Connection.Y2 = 175;
                     Connection.StrokeThickness = 4;
                     Connection.Stroke = Brushes.Black;
-                    TBCon23.Visibility = Visibility.Visible;
-                    TBCon22.Visibility = Visibility.Hidden;
-                    TBCon21.Visibility = Visibility.Hidden;
                     break;
                 default:
                     Connection.X2 = Connection.X1;
@@ -171,7 +153,6 @@ namespace DataBaseGame.Pages
         int taskCount = 0;
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            
             if(LBFirst.SelectedItem == null || LBSecond.SelectedItem == null)
             {
                 MessageBox.Show("Выберете поля", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -185,13 +166,6 @@ namespace DataBaseGame.Pages
                 Connection.Y1 = 0;
                 Connection.X2 = 0;
                 Connection.Y2 = 0;
-                TBCon11.Visibility = Visibility.Hidden;
-                TBCon12.Visibility = Visibility.Hidden;
-                TBCon13.Visibility = Visibility.Hidden;
-
-                TBCon21.Visibility = Visibility.Hidden;
-                TBCon22.Visibility = Visibility.Hidden;
-                TBCon23.Visibility = Visibility.Hidden;
             }
             else
             {
